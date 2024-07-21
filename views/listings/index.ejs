@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<% layout('/layouts/boilerplate') -%>
+  <body>
+    <h1>Welcome to Hevan Hub</h1>
+    <a href="/listings/new">Create new Listing</a>
+    <h3>Our all listings!</h3>
+
+    <ul>
+      <% for (listing of alllistings){%>
+      <li>
+        <a href="/listings/<%= listing._id %>">
+          <h4><%= listing.title %></h4>
+        </a>
+      </li>
+      <% } %>
+    </ul>
+  </body>
