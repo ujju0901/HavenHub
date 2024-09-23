@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <% layout('/layouts/boilerplate') -%>
-  <body>
-    <h1>Welcome to Hevan Hub</h1>
-    <h3>Our all listings!</h3>
-    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
-      <% for (let listing of alllistings){%>
-        <a href="/listings/<%=listing._id%>"class="listing-link">
-        <div class="card col">
-          <img src="<%= listing.image.url %>"class="card-img-top" alt="listing img" style="height: 18rem;">
-          <div class="card-img-overlay"></div>
-          <div class="card-body">
-            <p class="card-text"><b><%= listing.title %></b><br>
-            <span>&#8377</span><%= listing.price.toLocaleString("en-IN")%>/Night</p>
-          </div>
+<body>
+  <h1>Welcome to Hevan Hub</h1>
+  <h3>Our all listings!</h3>
+  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+    <% for (let listing of alllistings){%>
+    <a href="/listings/<%=listing._id%>" class="listing-link">
+      <div class="card col listing-card">
+        <img
+          src="<%= listing.image.url %>"
+          class="card-img-top"
+          alt="listing img"
+          style="height: 18rem"
+        />
+        <div class="card-img-overlay"></div>
+        <div class="card-body">
+          <p class="card-text">
+            <b><%= listing.title %></b><br />
+            <span>CAD&#36</span><b><%= listing.price %></b>
+          </p>
         </div>
-        </a>
-      <% } %>
-    </div>
-  </body>
-
+      </div>
+    </a>
+    <% } %>
+  </div>
+</body>

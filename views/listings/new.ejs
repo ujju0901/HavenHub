@@ -4,7 +4,7 @@
   <div class="col-8 offset-2">
     <h1>Create new Listing</h1>
     <br /><br />
-    <form action="/listings" method="post">
+    <form action="/listings" method="post" novalidate class="needs-validation">
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
         <input
@@ -12,7 +12,9 @@
           name="listing[title]"
           id="title"
           class="form-control"
+          required
         />
+        <div class="invalid-feedback">Please enter a Title.</div>
       </div>
       <div class="mb-3">
         <label for="description" class="form-label">Description</label>
@@ -21,7 +23,9 @@
           name="listing[description]"
           id="description"
           class="form-control"
+          required
         ></textarea>
+        <div class="invalid-feedback">Please enter a Description.</div>
       </div>
       <div class="mb-3">
         <label for="image-url" class="form-label">Image-url</label>
@@ -40,7 +44,9 @@
             name="listing[price]"
             id="price"
             class="form-control"
+            required
           />
+          <div class="invalid-feedback">Please enter a valid price.</div>
         </div>
 
         <div class="mb-3 col-8">
@@ -50,7 +56,11 @@
             name="listing[country]"
             id="country"
             class="form-control"
+            required
           />
+          <div class="invalid-feedback">
+            Please enter a valid country name .
+          </div>
         </div>
       </div>
       <div class="mb-3">
@@ -60,7 +70,9 @@
           name="listing[location]"
           id="location"
           class="form-control"
+          required
         />
+        <div class="invalid-feedback">Please enter a valid location.</div>
       </div>
       <br /><br />
       <div>
@@ -70,5 +82,29 @@
       </div>
       <br /><br />
     </form>
+    <script>
+      (() => {
+        "use strict";
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll(".needs-validation");
+
+        // Loop over them and prevent submission
+        Array.from(forms).forEach((form) => {
+          form.addEventListener(
+            "submit",
+            (event) => {
+              if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+
+              form.classList.add("was-validated");
+            },
+            false
+          );
+        });
+      })();
+    </script>
   </div>
 </div>
